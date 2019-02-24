@@ -7,7 +7,23 @@ Asciidoctorを使用したドキュメントのサンプルです。
 
 == セットアップ
 
-=== Ruby
+=== Rubyとyarnの環境構築
+
+以下のパッケージをインストールします。
+
+* rbenv
+* ruby-build
+* yarn
+
+[NOTE]
+インストールしたくない場合は個別に `Ruby` と `yarn` の環境を作成してください。
+また、既にインストールしている場合もこの手順は不要です。
+
+. 必要なパッケージをインストールします。
++
+----
+brew bundle
+----
 
 . Rubyをインストールします（rbenv前提）。
 +
@@ -15,23 +31,19 @@ Asciidoctorを使用したドキュメントのサンプルです。
 rbenv install
 ----
 
-. 必要なパッケージをインストールします。
-+
+=== Ruby
+
+必要なパッケージをインストールします。
+
 ----
 gem install bundler
 bundler install
 ----
 
-=== nodejs + yarn
+=== yarn
 
-. nodejsとyarnをインストールします。
-+
-----
-brew install nodejs yarn
-----
+必要なパッケージをインストールします。
 
-. 必要なパッケージをインストールします。
-+
 ----
 yarn install
 ----
