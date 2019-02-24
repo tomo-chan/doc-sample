@@ -1,0 +1,4 @@
+:doctype: book
+:lang: ja
+
+include::terms.adoc[]

@@ -1,1 +1,57 @@
-# doc-sample
+:lang: ja
+:secnum:
+
+= doc-sample
+
+Asciidoctorを使用したドキュメントのサンプルです。
+
+== セットアップ
+
+=== Ruby
+
+. Rubyをインストールします（rbenv前提）。
++
+----
+rbenv install
+----
+
+. 必要なパッケージをインストールします。
++
+----
+gem install bundler
+bundler install
+----
+
+=== nodejs + yarn
+
+. nodejsとyarnをインストールします。
++
+----
+brew install nodejs yarn
+----
+
+. 必要なパッケージをインストールします。
++
+----
+yarn install
+----
+
+== ビルド
+
+. ビルドします（yarn前提）。
++
+distディレクトリにHTMLが出力されます。
++
+----
+yarn build
+---- 
+
+== テスト
+
+. テストします（yarn前提）。
++
+テスト結果が標準出力されます。
++
+----
+yarn test
+----

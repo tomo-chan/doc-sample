@@ -1,0 +1,17 @@
+{
+  "name": "doc-sample",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "tomo-chan <aradgyma@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "textlint src",
+    "build": "./build.sh"
+  },
+  "devDependencies": {
+    "textlint": "^11.2.3",
+    "textlint-plugin-asciidoc-loose": "^1.0.1",
+    "textlint-plugin-html": "^0.2.0",
+    "textlint-rule-preset-ja-technical-writing": "^3.1.0"
+  }
+}
