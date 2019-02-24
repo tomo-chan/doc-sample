@@ -1,0 +1,6 @@
+version: 1
+rules:
+  - expected: Asciidoctor
+    specs:
+      - from: asciidoctor
+        to:   Asciidoctor

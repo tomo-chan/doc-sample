@@ -1,4 +1,121 @@
 include::attributes.adoc[]
 
-= ドキュメントサンプル
+= Asciidoctorのインストール
+
+AsciidoctorはWindows、Mac、Linuxで使用できます。DockerがインストールされていればDocker imageを使用することもできます。
+ここではWindows、Mac、Dockerの場合のインストール方法を記載します。詳しいインストール方法はlink:https://asciidoctor.org/#installation[]を参照してください。
+PDFを出力したい場合は  `Ruby` をインストールする方法になります。
+
+== Mac
+
+Macの場合は `brew` から `Ruby` をインストールします。
+
+[NOTE]
+`brew` がインストールされていない場合は、 link:https://brew.sh[] からインストールしてください。
+
+=== Ruby
+
+Macは元々 `Ruby` がインストールされています。もともとの `Ruby` を汚したくない場合は別途インストールします。本手順ではrbenvを利用してAsciidoctor用のRuby環境を用意します。
+
+. rbenvをインストールしてRubyをインストールします（執筆時点では{var-version-ruby}が最新でした）。
++
+[source,subs="attributes"]
+----
+brew install rbenv ruby-build
+echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
+rbenv init
+rbenv install {var-version-ruby}
+----
+
+. ターミナルを再起動します。
+
+. ドキュメントのディレクトリ荷移動してインストールしたバージョンのrubyを使用するように設定します。
++
+----
+rbenv local {var-version-ruby}
+----
+設定されると `.ruby-version` というファイルが作成されます。
+
+. asciidoctorをインストールします。
+----
+gem install asciidoctor
+gem install asciidoctor-pdf --pre
+gem install asciidoctor-pdf-cjk
+----
+
+== Windows
+
+Windowsの場合は `Chocolatey` を使用する方法と `RubyInstaller` からインストールする方法の2種類があります。
+`Chocolatey` 導入されていれば簡単なコマンドでインストールできますので導入を検討してみてください。
+
+=== Chocolatey
+
+管理者権限で `コマンドプロンプト` または `PowerShell` を起動します。
+
+. rubyをインストールします。
++
+----
+choco install ruby
+----
+
+. ターミナルを再起動します。
+
+. asciidoctorをインストールします。
++
+----
+gem install asciidoctor
+gem install asciidoctor-pdf --pre
+gem install asciidoctor-pdf-cjk
+----
+
+[NOTE]
+ChocolateyはWindows向けのパッケージマネージャです。インストールしておくとWindows向けのソフトウェアをyumやaptのように管理できます。
+インストール方法は link:https://chocolatey.org[]からインストールしてください。
+社内で認証付きProxyがある場合はlink:https://chocolatey.org/docs/proxy-settings-for-chocolatey#installing-chocolatey-behind-a-proxy-server[]を参考にProxyの設定をした上でインストールしてください。
+
+=== RubyInstaller
+
+`Chocolatey` が導入されていない場合は `RubyInstaller` でRuby環境を作成して以下のコマンドを実行します。`Ruby` をインストールしたら下記コマンドで `asciidoctor` をインストールします。
+
+[source]
+----
+gem install asciidoctor
+gem install asciidoctor-pdf --pre
+----
+
+== Docker
+
+Dockerを使用するとホスト環境を汚すことなくasciidocerが使用できます。
+
+Asciidoctorのイメージは `asciidoctor/docker-asciidoctor:latest` なので以下のコマンドで取得できます。
+
+[source,bash]
+----
+docker pull asciidoctor/docker-asciidoctor:latest
+----
+
+詳しい使用方法はlink:https://github.com/asciidoctor/docker-asciidoctor[]を参照してください。
+ここではビルド方法のみ記載します。
+
+[NOTE]
+Docker-Asciidoctorは `/documents` が作業ディレクトリなので `-v` でドキュメントのあるディレクトリを `/documents` にマウントして実行します。
+
+[source,bash]
+----
+docker run -it -v <your directory>:/documents/ asciidoctor/docker-asciidoctor
+----
+
+`asciidoctor/docker-asciidoctor` はタグがlatestのみでimage内のAsciidoctorのバージョンが上がっても変わったことがわかりません。
+下記のようなスクリプトでタグを打っておくと良いです（jqとawkを使用しています）。
+
+[source,bash]
+----
+docker pull asciidoctor/docker-asciidoctor:latest
+
+ASCIIDOCTOR_VERSION=$(docker inspect asciidoctor/docker-asciidoctor | jq -r '.[].Config.Env[] | select(match("ASCIIDOCTOR_VERSION"))' | awk -F = '{print $2}')
+
+if [ -z "`docker image ls -q --filter "reference=asciidoctor/docker-asciidoctor:${ASCIIDOCTOR_VERSION}"`" ]; then
+  docker tag asciidoctor/docker-asciidoctor:latest asciidoctor/docker-asciidoctor:${ASCIIDOCTOR_VERSION}
+fi
+----
 
