@@ -1,0 +1,15 @@
+os:
+- linux
+sudo: false
+language: node_js
+node_js:
+- "stable"
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - g++-4.8
+install:
+- export CXX=g++-4.8
+- npm install
