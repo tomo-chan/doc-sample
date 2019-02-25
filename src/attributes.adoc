@@ -1,4 +1,14 @@
 :doctype: book
 :lang: ja
+:toc: left
+:toclevels: 3
+:toc-level: 目次
+:chapter-label:
+:example-caption: 例
+:figure-caption: 図
+:table-caption: 表
+:listing-caption: リスト
+:preface-title: はじめに
+
 
 include::terms.adoc[]
