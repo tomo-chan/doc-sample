@@ -6,7 +6,6 @@
   "license": "MIT",
   "scripts": {
     "test": "textlint src ; ./test.sh",
-    "prebuild": "yarn test",
     "build": "./build.sh"
   },
   "devDependencies": {

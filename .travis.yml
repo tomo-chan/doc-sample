@@ -10,9 +10,17 @@ addons:
       - ubuntu-toolchain-r-test
     packages:
       - g++-4.8
+
+before_install:
+  - rvm install 2.6.1
+  - ruby --version
+
 install:
   - export CXX=g++-4.8
   - npm install
+  - bundle install
+  
+cache: bundler
 
 script:
   - yarn test
