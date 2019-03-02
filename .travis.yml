@@ -18,7 +18,7 @@ before_install:
 install:
   - export CXX=g++-4.8
   - npm install
-  - gem install bundler:2.0.1
+  - gem install bundler
   - bundle install
   
 cache: bundler

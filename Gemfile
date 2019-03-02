@@ -7,5 +7,3 @@ gem "concurrent-ruby", "~> 1.1"
 gem "rouge", "~> 3.3"
 
 gem "asciidoctor-pdf-cjk-kai_gen_gothic", "~> 0.1.1"
-
-gem "asciimath", "~> 1.0"
