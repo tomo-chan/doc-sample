@@ -36,7 +36,7 @@ rbenv local {var-version-ruby}
 ----
 設定されると `.ruby-version` というファイルが作成されます。
 
-. asciidoctorをインストールします。
+. Asciidoctorをインストールします。
 ----
 gem install asciidoctor
 gem install asciidoctor-pdf --pre
@@ -60,7 +60,7 @@ choco install ruby
 
 . ターミナルを再起動します。
 
-. asciidoctorをインストールします。
+. Asciidoctorをインストールします。
 +
 ----
 gem install asciidoctor

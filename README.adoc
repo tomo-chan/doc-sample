@@ -1,5 +1,6 @@
 :lang: ja
-:secnum:
+:sectnums:
+:sectnumlevels: 4
 
 = doc-sample
 

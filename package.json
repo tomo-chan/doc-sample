@@ -5,7 +5,8 @@
   "author": "tomo-chan <aradgyma@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "test": "textlint src",
+    "test": "textlint src ; ./test.sh",
+    "prebuild": "yarn test",
     "build": "./build.sh"
   },
   "devDependencies": {

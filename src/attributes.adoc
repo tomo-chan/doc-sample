@@ -1,4 +1,6 @@
 :doctype: book
 :lang: ja
+:sectnums:
+:sectnumlevels: 4
 
 include::terms.adoc[]
