@@ -1,15 +1,27 @@
 os:
-- linux
+  - linux
 sudo: false
 language: node_js
 node_js:
-- "stable"
+  - "stable"
 addons:
   apt:
     sources:
-    - ubuntu-toolchain-r-test
+      - ubuntu-toolchain-r-test
     packages:
-    - g++-4.8
+      - g++-4.8
 install:
-- export CXX=g++-4.8
-- npm install
+  - export CXX=g++-4.8
+  - npm install
+
+script:
+  - yarn test
+  - yarn build
+
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+  keep-history: true
+  on:
+    tags: true
