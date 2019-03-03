@@ -10,5 +10,17 @@
 :listing-caption: リスト
 :preface-title: はじめに
 
+:imagesdir: images
+:sectnums:
+:source-highlighter: rouge
+:icons: font
+:icon-set: fa
+
+:pdf-style: KaiGenGothicJP
+
+:email: aradgyma@gmail.com
+
+// validation
+:attribute-missing: wran
 
 include::terms.adoc[]
