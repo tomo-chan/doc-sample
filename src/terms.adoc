@@ -1,0 +1,11 @@
+:docdir: articles
+
+:var-url-git-for-windows: https://gitforwindows.org
+:var-url-asciidoctor: 
+:var-url-brew:
+:var-url-vscode: https://code.visualstudio.com/ 
+
+:var-version-ruby: 2.6.1
+:var-version-rbenv: 1.1.1
+:var-version-yarn: 1.13.0
+:var-version-asciidoctor: 1.5.8
