@@ -1,27 +1,9 @@
-os:
-  - linux
-sudo: false
-language: node_js
-node_js:
-  - "stable"
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - g++-4.8
+services: docker
 
 before_install:
-  - rvm install 2.6.1
-  - ruby --version
-
-install:
-  - export CXX=g++-4.8
-  - npm install
-  - gem install bundler
-  - bundle install
-  - asciidoctor-pdf-cjk-kai_gen_gothic-install
-cache: bundler
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin registry.gitlab.com
+  - docker pull registry.gitlab.com/documentation-as-code/documentation-as-code/asciidoctor:1.5.8
+  - docker run registry.gitlab.com/documentation-as-code/documentation-as-code/asciidoctor:1.5.8 /bin/bash -c "yarn install"
 
 script:
   - yarn test
@@ -33,4 +15,4 @@ deploy:
   github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
   keep-history: true
   on:
-    tags: true
+    branch: master
